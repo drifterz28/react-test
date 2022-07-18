@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Which of the following is a list of colors?",
+    "A": "Dog, cat, fish",
+    "B": "Earth, Mars, Venus, Saturn, Mercury, Jupiter, Neptune, Uranus",
+    "C": "Guitar, drums, piano, harmonica, tambourine, trumpet",
+    "D": "Red, orange, yellow, green, blue, indigo, violet",
+    "Ans": ["D"]
+  },
+  {
+    "question": "Which of these animals can fly?",
+    "A": "Cats",
+    "B": "Bats",
+    "C": "Birds",
+    "D": "Worms",
+    "Ans": ["B", "C"]
+  },
+  {
+    "question": "If a train is supposed to reach the station at 4:10 am. but it is 35 minutes late, at what time will the train reach the station?",
+    "A": "4:45 am",
+    "B": "3:00 am",
+    "C": "4:45 pm",
+    "D": "6:00 pm",
+    "Ans": ["A"]
+  },
+  {
+    "question": "If you have 10 mangos and another person gives you 12 more, how many mangos will you have in total?",
+    "A": "1 mango",
+    "B": "2 mangos",
+    "C": "10 mangos",
+    "D": "22 mangos",
+    "Ans": ["D"]
+  },
+  {
+    "question": "If you are reading a book and are on page 374, what will the number of the next page be?",
+    "A": "375",
+    "B": "373",
+    "C": "474",
+    "D": "400",
+    "Ans": ["A"]
+  }
+]
