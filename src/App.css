@@ -1,14 +1,3 @@
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -18,6 +7,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+h5.MuiTypography-h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .App-link {
@@ -32,10 +26,13 @@
   margin: 24px auto;
 }
 
-.MuiFormLabel-root,
+.MuiFormLabel-root.MuiFormLabel-root.Mui-focused,
+.MuiFormLabel-root.MuiFormLabel-root,
 .MuiFormGroup-root {
-  margin-bottom: 16px;
+  margin-bottom: 0;
+  color: #2d2d2d;
 }
+
 .score {
   margin-bottom: 16px;
   justify-content: space-between;
@@ -59,8 +56,12 @@
 }
 
 .successAlert.successAlert {
-  margin-bottom: 24px;
+  margin-bottom: 6px;
   border: none;
   font-weight: bold;
   padding-left: 0;
+}
+
+.MuiButtonBase-root.playAgain {
+  margin-top: 24px;
 }

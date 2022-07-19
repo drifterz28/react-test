@@ -23,11 +23,13 @@ const Question = () => {
   );
 
   const [value, setValue] = useState("");
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [isWrong, setIsWrong] = useState<boolean>(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isRightAnser = question.Ans.includes(event.target.value);
     setIsCorrect(isRightAnser);
+    setIsWrong(!isRightAnser);
     setValue(event.target.value);
   };
 
@@ -39,24 +41,55 @@ const Question = () => {
   useEffect(() => {
     setValue("");
     setIsCorrect(false);
+    setIsWrong(false);
   }, [question]);
 
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">{question.question}</FormLabel>
-      <RadioGroup value={value} onChange={handleChange}>
-        <FormControlLabel value="A" control={<Radio />} label={question.A} />
-        <FormControlLabel value="B" control={<Radio />} label={question.B} />
-        <FormControlLabel value="C" control={<Radio />} label={question.C} />
-        <FormControlLabel value="D" control={<Radio />} label={question.D} />
+      <RadioGroup aria-label="answers" value={value} onChange={handleChange}>
+        <FormControlLabel
+          disabled={!!value}
+          value="A"
+          control={<Radio />}
+          label={question.A}
+        />
+        <FormControlLabel
+          disabled={!!value}
+          value="B"
+          control={<Radio />}
+          label={question.B}
+        />
+        <FormControlLabel
+          disabled={!!value}
+          value="C"
+          control={<Radio />}
+          label={question.C}
+        />
+        <FormControlLabel
+          disabled={!!value}
+          value="D"
+          control={<Radio />}
+          label={question.D}
+        />
       </RadioGroup>
       {isCorrect && (
         <Alert className="successAlert" variant="outlined" severity="success">
           You got it right!
         </Alert>
       )}
+      {isWrong && (
+        <Alert className="successAlert" variant="outlined" severity="error">
+          Sorry, that is wrong!
+        </Alert>
+      )}
       <Grid item xs={12}>
-        <Button variant="contained" color="primary" onClick={handleClick}>
+        <Button
+          disabled={!value}
+          variant="contained"
+          color="primary"
+          onClick={handleClick}
+        >
           Next Question
         </Button>
       </Grid>
