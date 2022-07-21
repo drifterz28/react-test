@@ -21,9 +21,10 @@ const FinalScore = () => {
   return (
     <Grid container direction="column" alignItems="center">
       <Grid item>
+        {/* I was not able to get codersandbox to load an image. */}
         <img
-          src="/congratulations.jpeg"
-          alt="congratulations image"
+          src="https://thumbs.dreamstime.com/b/illustration-calligraphic-inscription-congratulations-vector-element-design-illustration-calligraphic-inscription-149833255.jpg"
+          alt="congratulations"
           height={200}
         />
       </Grid>
