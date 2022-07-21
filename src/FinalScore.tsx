@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { reset } from "./reducer";
-import congratulations from "./congratulations.jpeg";
 
 const FinalScore = () => {
   const dispatch = useDispatch();
@@ -22,7 +21,11 @@ const FinalScore = () => {
   return (
     <Grid container direction="column" alignItems="center">
       <Grid item>
-        <img src={congratulations} alt="congratulations image" height={200} />
+        <img
+          src="/congratulations.jpeg"
+          alt="congratulations image"
+          height={200}
+        />
       </Grid>
       <Grid item>
         <Typography variant="h3" align="center" gutterBottom>
