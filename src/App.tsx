@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { initialStateType } from "./types";
-import "./App.css";
-import Container from "@material-ui/core/Container";
+import "./App.scss";
 import Question from "./Question";
 import Score from "./Score";
 import FinalScore from "./FinalScore";
@@ -15,8 +14,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
+      <header className="AppHeader">
+        <div className="quizContainer">
           {question < total ? (
             <>
               <Score />
@@ -25,7 +24,7 @@ export default function App() {
           ) : (
             <FinalScore />
           )}
-        </Container>
+        </div>
       </header>
     </div>
   );

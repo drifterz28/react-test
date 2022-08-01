@@ -2,15 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { initialStateType } from "./types";
 
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Alert from "@material-ui/lab/Alert";
-
 import { nextQuestion } from "./reducer";
 
 const Question = () => {
@@ -26,16 +17,19 @@ const Question = () => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isWrong, setIsWrong] = useState<boolean>(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: any) => {
+    console.log(event.target.value);
     const isRightAnser = question.Ans.includes(event.target.value);
     setIsCorrect(isRightAnser);
     setIsWrong(!isRightAnser);
     setValue(event.target.value);
   };
 
-  const handleClick = () => {
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
     const correctAnswer = question.Ans.includes(value) ? correct + 1 : correct;
     dispatch(nextQuestion(correctAnswer));
+    event.target.reset();
   };
 
   useEffect(() => {
@@ -45,55 +39,58 @@ const Question = () => {
   }, [question]);
 
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">{question.question}</FormLabel>
-      <RadioGroup aria-label="answers" value={value} onChange={handleChange}>
-        <FormControlLabel
-          disabled={!!value}
-          value="A"
-          control={<Radio />}
-          label={question.A}
-        />
-        <FormControlLabel
-          disabled={!!value}
-          value="B"
-          control={<Radio />}
-          label={question.B}
-        />
-        <FormControlLabel
-          disabled={!!value}
-          value="C"
-          control={<Radio />}
-          label={question.C}
-        />
-        <FormControlLabel
-          disabled={!!value}
-          value="D"
-          control={<Radio />}
-          label={question.D}
-        />
-      </RadioGroup>
-      {isCorrect && (
-        <Alert className="successAlert" variant="outlined" severity="success">
-          You got it right!
-        </Alert>
-      )}
-      {isWrong && (
-        <Alert className="successAlert" variant="outlined" severity="error">
-          Sorry, that is wrong!
-        </Alert>
-      )}
-      <Grid item xs={12}>
-        <Button
-          disabled={!value}
-          variant="contained"
-          color="primary"
-          onClick={handleClick}
-        >
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <legend>{question.question}</legend>
+        <label>
+          <input
+            disabled={!!value}
+            value="A"
+            type="radio"
+            name="answers"
+            onClick={handleChange}
+          />
+          {question.A}
+        </label>
+        <label>
+          <input
+            disabled={!!value}
+            value="B"
+            type="radio"
+            name="answers"
+            onClick={handleChange}
+          />
+          {question.B}
+        </label>
+        <label>
+          <input
+            disabled={!!value}
+            value="C"
+            type="radio"
+            name="answers"
+            onClick={handleChange}
+          />
+          {question.C}
+        </label>
+        <label>
+          <input
+            disabled={!!value}
+            value="D"
+            type="radio"
+            name="answers"
+            onClick={handleChange}
+          />
+          {question.D}
+        </label>
+      </fieldset>
+      {isCorrect && <div className="alert success">You got it right!</div>}
+      {isWrong && <div className="alert error">Sorry, that is wrong!</div>}
+      <div className="item">
+        <button disabled={!value} className="nextButton">
           Next Question
-        </Button>
-      </Grid>
-    </FormControl>
+        </button>
+      </div>
+    </form>
   );
 };
 
